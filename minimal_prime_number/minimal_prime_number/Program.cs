@@ -8,48 +8,46 @@ using System.IO;   // for working with files
 namespace minimal_prime_number
 {
     class Program
-        {
+    {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader(@"C:\Users\HOME\lab1\minimal_prime_number\input.txt"); // creats stream for reading 
-            string s = sr.ReadLine(); // "9 64 25"
-            string[] arr = s.Split(); // arr[0] = "9", arr[1] = "64", arr[3]="25"
-            int a = int.Parse(arr[0]); // a = 9
-            int b = int.Parse(arr[1]); // b = 64
-            int c = int.Parse(arr[2]); // c = 25
-            int[] numbers = { a, b, c }; // creat array for integers
+            StreamReader sr = new StreamReader(@"C:\Users\HOME\lab1\minimal_prime_number\input.txt"); // creats stream for reading from file
+            StreamWriter sw = new StreamWriter(@"C:\Users\HOME\lab1\minimal_prime_number\output.txt");//file for writing the answer
+            string s = sr.ReadLine(); // "7 8 5"
+            string[] arr = s.Split(); // arr[0] = "7", arr[1] = "8", arr[3]="5"
 
-            int count = 0;  // counts number of divided numbers
+            int[] numbers = new int[arr.Length];//new array to store numbers as integers
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                numbers[i] = int.Parse(arr[i]); // converting into integer
+            }
+
+            int min = 2147483647; // maxmal range of integer
+
             for (int i = 0; i < numbers.Length; i++) // cycle for entered numbers
             {
-                count = 0;
-                for (int j = 1; j <= numbers.Length; j++) // 1 2 3 4 5 ... divides till number in args
+                int count = 0; // counter in order to identify number of dividers
+                for (int j = 1; j <= numbers[i]; j++) // 1 2 3 4 5 ... divides till number in args
                 {
-                    if (numbers[i] % j == 0) // checks whether the number is dividable 
+                    if (numbers[i] % j == 0) // checks whether the number is divideable 
                     {
                         count++;
                     }
                 }
 
                 if (count == 2) // checks whether the number is prime or not
-                {   
-
-                }
-                count = 0;
-            }
-
-            int min = 1000000;
-            for (int j = 0; j < numbers.Length; j++) //checks every number in array for minimum
-            {
-                if (numbers[j] < min)
                 {
-                    min = numbers[j];
+                    if (numbers[i] < min)
+                    {
+                        min = numbers[i];  //sets minimum
+                    }
                 }
             }
 
-            Console.WriteLine("minimum number is " + min); //shows minimum number on console
-            Console.ReadKey();
+            sw.WriteLine(min); // writes answer in file
             sr.Close();
+            sw.Close();
         }
     }
 }
