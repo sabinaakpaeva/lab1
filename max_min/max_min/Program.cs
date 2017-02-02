@@ -28,7 +28,7 @@ namespace max_and_min
                 }
             }
 
-            int min = 1000000;
+            int min = 2147483647;
             for (int j = 0; j < numbers.Length; j++) //checks every number in array for minimum
             {
                 if (numbers[j] < min)
