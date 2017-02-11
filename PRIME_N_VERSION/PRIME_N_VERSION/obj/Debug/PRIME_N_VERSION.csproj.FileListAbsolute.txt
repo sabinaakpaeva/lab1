@@ -4,3 +4,9 @@ c:\users\home\documents\visual studio 2013\Projects\PRIME_N_VERSION\PRIME_N_VERS
 c:\users\home\documents\visual studio 2013\Projects\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.csprojResolveAssemblyReference.cache
 c:\users\home\documents\visual studio 2013\Projects\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.exe
 c:\users\home\documents\visual studio 2013\Projects\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.pdb
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\bin\Debug\PRIME_N_VERSION.exe.config
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.exe
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.pdb
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\bin\Debug\PRIME_N_VERSION.exe
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\bin\Debug\PRIME_N_VERSION.pdb
+C:\Users\HOME\lab1\PRIME_N_VERSION\PRIME_N_VERSION\obj\Debug\PRIME_N_VERSION.csprojResolveAssemblyReference.cache
