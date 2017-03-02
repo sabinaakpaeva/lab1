@@ -1,9 +1,0 @@
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\bin\Debug\max_min.exe.config
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\bin\Debug\max_min.exe
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\bin\Debug\max_min.pdb
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\obj\Debug\max_min.csprojResolveAssemblyReference.cache
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\obj\Debug\max_min.exe
-c:\users\home\documents\visual studio 2013\Projects\max_min\max_min\obj\Debug\max_min.pdb
-C:\Users\HOME\lab1\max_min\max_min\bin\Debug\max_min.exe.config
-C:\Users\HOME\lab1\max_min\max_min\obj\Debug\max_min.exe
-C:\Users\HOME\lab1\max_min\max_min\obj\Debug\max_min.pdb

@@ -1,0 +1,3 @@
+max is 54
+min is 2
+sum is 56
