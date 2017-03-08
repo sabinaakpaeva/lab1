@@ -53,6 +53,7 @@ namespace Far
                     if (fsi.GetType() == typeof(DirectoryInfo))
                     {
                         directory = new DirectoryInfo(fsi.FullName);
+                        cursor = 0;
                     }
                     if (fsi.GetType() == typeof(FileInfo))
                     {

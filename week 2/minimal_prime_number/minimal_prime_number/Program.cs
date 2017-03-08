@@ -38,20 +38,20 @@ namespace minimal_prime_number
                     }
                 }
 
-                
+               
                 if (count == 2) // checks whether the number is prime or not
                 {
-                    
-                    for (int j; j < primes.Length; j++)
+                for (int k=1; k < primes.Length; k++)
                     {
-                        primes[j] = numbers[i];
-                        if (numbers[i] < min)
-                        min = numbers[i];  //sets minimum
+                        primes[k] = numbers[i];
+                        min = primes[0];
+                        if (primes[k] < min)
+                        min = primes[k];  //sets minimum
                     }
                 }
             }
 
-            sw.WriteLine(min); // writes answer in file
+            sw.WriteLine(min); // writes answer in file */
             sr.Close();
             sw.Close();
         }
