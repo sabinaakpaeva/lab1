@@ -12,9 +12,9 @@ namespace mycalculator
 {
     public partial class Form1 : Form
     {
-        public string operations = "";
-         public double firstnumber, secondnumber, result;
         public static Calculator calc;
+        double memory;
+        string symbol;
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace mycalculator
         private void number_click (object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (calc.oper == Calculator.Operation.NONE 
+            textBox1.Text += btn.Text;
+           /* if (calc.oper == Calculator.Operation.NONE 
              || calc.oper == Calculator.Operation.NUMBER)
             {
                 textBox1.Text += btn.Text;
@@ -38,14 +39,16 @@ namespace mycalculator
                 calc.saveFirstNumber(textBox1.Text);
                 textBox1.Clear();
                 textBox1.Text += btn.Text;
-                secondnumber = double.Parse(textBox1.Text);
+                calc.secondnumber = double.Parse(textBox1.Text);
             }
             calc.oper = Calculator.Operation.NUMBER;
 
             if (calc.oper == Calculator.Operation.MINUS)
             {
                 calc.saveFirstNumber(textBox1.Text);
+                textBox1.Clear();
                 textBox1.Text += btn.Text;
+                calc.secondnumber = double.Parse(textBox1.Text);
             }
             calc.oper = Calculator.Operation.NUMBER;
 
@@ -55,6 +58,71 @@ namespace mycalculator
 
             }*/
         }
+
+        private void operationbtn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn.Text == "=")
+            {
+
+                calc.secondnumber = double.Parse(textBox1.Text);
+
+                if (symbol == "+")
+                {
+                    calc.firstnumber = calc.firstnumber + calc.secondnumber;
+                    textBox1.Text = calc.firstnumber.ToString();
+                }
+                if (symbol == "-")
+                {
+                    calc.firstnumber = calc.firstnumber - calc.secondnumber;
+                    textBox1.Text = calc.firstnumber.ToString();
+                }
+                if (symbol == "*")
+                {
+                    calc.firstnumber = calc.firstnumber * calc.secondnumber;
+                    textBox1.Text = calc.firstnumber.ToString();
+                }
+                if (symbol == "/")
+                {
+                    calc.firstnumber = calc.firstnumber / calc.secondnumber;
+                    textBox1.Text = calc.firstnumber.ToString();
+                }
+            }
+            else if (btn.Text == "%")
+            {
+                calc.secondnumber = double.Parse(textBox1.Text);
+                calc.secondnumber = calc.firstnumber * calc.secondnumber / 100;
+                textBox1.Text = calc.secondnumber.ToString();
+
+            }
+            else if (btn.Text == "MS")
+            {
+                memory = double.Parse(textBox1.Text);
+                textBox1.Text = "";
+            }
+            else if (btn.Text == "MC")
+            {
+                memory = 0;
+                textBox1.Text = "";
+            }
+            else if (btn.Text == "M+")
+            {
+                calc.firstnumber = double.Parse(textBox1.Text);
+                textBox1.Text = (calc.firstnumber + memory).ToString();
+            }
+            else if (btn.Text == "M-")
+            {
+                calc.firstnumber = double.Parse(textBox1.Text);
+                textBox1.Text = (calc.firstnumber - memory).ToString();
+            }
+            else
+            {
+                calc.firstnumber = double.Parse(textBox1.Text);
+                symbol = btn.Text;
+                textBox1.Text = "";
+            }
+        }
+
 
         private void comma(object sender, EventArgs e)
         {
@@ -70,63 +138,17 @@ namespace mycalculator
             return;
         }
 
-        private void plus(object sender, EventArgs e)
-        {
-            calc.oper = Calculator.Operation.PLUS;
-            operations = "+";
-
-        }
-
-        private void minus(object sender, EventArgs e)
-        {
-
-        }
-
-        private void multiply(object sender, EventArgs e)
-        {
-
-        }
-
-        private void divide(object sender, EventArgs e)
-        {
-
-        }
-
-        private void equal(object sender, EventArgs e)
-        {
-            switch (operations)
-            {
-                case "+":
-                    firstnumber = firstnumber + secondnumber;
-                    textBox1.Text = firstnumber.ToString();
-                    break;
-                case "-":
-                    firstnumber = firstnumber - secondnumber;
-                    textBox1.Text = firstnumber.ToString();
-                    break;
-                case "x":
-                     firstnumber = firstnumber * secondnumber;
-                    textBox1.Text = firstnumber.ToString();
-                    break;
-                case "/":
-                     firstnumber = firstnumber / secondnumber;
-                    textBox1.Text = firstnumber.ToString();
-                    break;
-                case "%":
-                    firstnumber = (firstnumber) / secondnumber * 100;
-                    textBox1.Text = firstnumber.ToString();
-                    break;
-            }
-        }
-
         private void inverse_divide(object sender, EventArgs e)
         {
-            textBox1.Text = Convert.ToString(1 / firstnumber);
+            calc.saveFirstNumber(textBox1.Text);
+            textBox1.Text = Convert.ToString(1 / calc.firstnumber);
         }
 
         private void percent(object sender, EventArgs e)
         {
-            textBox1.Text = Convert.ToString(firstnumber*firstnumber);
+            calc.saveFirstNumber(textBox1.Text);
+            calc.saveSecondNumber(textBox1.Text);
+            textBox1.Text = Convert.ToString(calc.firstnumber * calc.firstnumber/100);
         }
 
         private void nazad(object sender, EventArgs e)
@@ -147,25 +169,25 @@ namespace mycalculator
 
         private void root(object sender, EventArgs e)
         {
-            textBox1.Text = (Math.Sqrt(firstnumber)).ToString();
+            calc.saveFirstNumber(textBox1.Text);
+            textBox1.Text = (Math.Sqrt(calc.firstnumber)).ToString();
         }
 
         private void sign(object sender, EventArgs e)
         {
-            firstnumber = firstnumber * (-1);
-            textBox1.Text = Convert.ToString(firstnumber);
+            calc.saveFirstNumber(textBox1.Text);
+            textBox1.Text = Convert.ToString(calc.firstnumber*(-1));
         }
 
         private void C(object sender, EventArgs e)
         {
-            textBox1.Text = "0";
-            firstnumber = 0;
+            textBox1.Text = "";
         }
 
         private void CE(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox1.Text = "0";
+            calc.firstnumber = 0;
+            textBox1.Text = "";
         }            
         }
     }
