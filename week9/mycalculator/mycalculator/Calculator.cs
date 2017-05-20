@@ -8,7 +8,19 @@ namespace mycalculator
 {
     public class Calculator
     {
-       
+        public enum Operation
+        {
+            NONE,
+            NUMBER,
+            PLUS,
+            MINUS,
+            MULTIPLY,
+            DIVIDE,
+            EQUAL
+        };
+
+        public Operation oper;
+
         public double firstnumber, secondnumber, result;
 
         public Calculator()

@@ -59,6 +59,8 @@ namespace Complex
             return c3;
         }
 
+    
+
     public override string ToString()
     {
      return x+ "/" + y;
@@ -66,9 +68,28 @@ namespace Complex
     }
 
 
- 
+
     class Program 
     {
+        static void Save(Complex complex)
+        {
+            FileStream fs = new FileStream("ser1.xml", FileMode.OpenOrCreate);
+            XmlSerializer xs = new XmlSerializer(typeof(Complex));
+            xs.Serialize(fs, complex);
+            fs.Close();
+            Console.WriteLine("Объект сериализован");
+        }
+
+        static void des(Complex com)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Complex));
+            FileStream fz = new FileStream("ser1.xml", FileMode.OpenOrCreate);
+            {
+                Complex newcomplex = (Complex)xs.Deserialize(fz);
+                Console.WriteLine("Объект десериализован");
+            }
+        }
+
         static void Main(string[] args)
         {
            
@@ -76,24 +97,15 @@ namespace Complex
             Complex c2 = new Complex(3, 4);
             Complex c3 = c1 + c2;
             Console.WriteLine(c3);
-           
-
-            FileStream fs = new FileStream("ser1.xml", FileMode.OpenOrCreate);
-            XmlSerializer xs = new XmlSerializer(typeof(Complex));
-            xs.Serialize(fs, c3);
-            fs.Close();
-            Console.WriteLine("Объект сериализован");
-
-            string k = Console.ReadLine();
-            if (k == "d")
+            string g = Console.ReadLine();
+            if (g == "s")
+            Save(c3);
+          
+            else if (g == "des")
             {
-                FileStream fz = new FileStream("ser1.xml", FileMode.OpenOrCreate);
-                {
-                    Complex newcomplex = (Complex)xs.Deserialize(fz);
-                    Console.WriteLine("Объект десериализован");
-                }
+                des(c3);
             }
-           
+            
             Console.ReadKey();
         }
     }

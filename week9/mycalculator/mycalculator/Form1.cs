@@ -13,8 +13,8 @@ namespace mycalculator
     public partial class Form1 : Form
     {
         public static Calculator calc;
-        double memory;
-        string symbol;
+ //       double memory;
+  //      string symbol;
         public Form1()
         {
             InitializeComponent();
@@ -22,13 +22,33 @@ namespace mycalculator
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {}
+        { }
 
-        private void number_click (object sender, EventArgs e)
+        private void number_click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            textBox1.Text += btn.Text;
-           /* if (calc.oper == Calculator.Operation.NONE 
+           // textBox1.Text += btn.Text;
+
+             if (btn.Text == "+")
+            {
+                calc.oper = Calculator.Operation.PLUS;
+            }
+            
+             if (btn.Text == "=")
+            {
+                calc.oper = Calculator.Operation.EQUAL;
+            }
+             
+            if (btn.Text == "")
+            {
+                calc.oper = Calculator.Operation.NONE;
+            }
+
+            if (btn.Text == "1" || btn.Text == "2" || btn.Text == "3" || btn.Text == "4" || btn.Text == "5" || btn.Text == "6" || btn.Text == "7" || btn.Text == "8" || btn.Text == "9" || btn.Text == "0")
+            {
+                calc.oper = Calculator.Operation.NUMBER;
+            }
+            if (calc.oper == Calculator.Operation.NONE 
              || calc.oper == Calculator.Operation.NUMBER)
             {
                 textBox1.Text += btn.Text;
@@ -40,6 +60,7 @@ namespace mycalculator
                 textBox1.Clear();
                 textBox1.Text += btn.Text;
                 calc.secondnumber = double.Parse(textBox1.Text);
+                calc.result = calc.firstnumber + calc.secondnumber;
             }
             calc.oper = Calculator.Operation.NUMBER;
 
@@ -52,14 +73,17 @@ namespace mycalculator
             }
             calc.oper = Calculator.Operation.NUMBER;
 
-            /*if (calc.oper == Calculator.Operation.EQUAL)
+            if (calc.oper == Calculator.Operation.EQUAL)
             {
+                
                 calc.saveSecondNumber(textBox1.Text);
+                textBox1.Text = calc.result.ToString();
 
-            }*/
-        }
-
-        private void operationbtn_Click(object sender, EventArgs e)
+            }
+                
+        /*}
+        
+        /*private void operationbtn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             if (btn.Text == "=")
@@ -111,6 +135,11 @@ namespace mycalculator
                 textBox1.Text = (calc.firstnumber + memory).ToString();
             }
             else if (btn.Text == "M-")
+            {
+                calc.firstnumber = double.Parse(textBox1.Text);
+                textBox1.Text = (calc.firstnumber - memory).ToString();
+            }
+            else if (btn.Text == "MR")
             {
                 calc.firstnumber = double.Parse(textBox1.Text);
                 textBox1.Text = (calc.firstnumber - memory).ToString();
@@ -189,5 +218,7 @@ namespace mycalculator
             calc.firstnumber = 0;
             textBox1.Text = "";
         }            
+         * */
         }
     }
+}
